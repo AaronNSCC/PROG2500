@@ -1,0 +1,53 @@
+<UserControl x:Class="LabStatusBoard.Controls.MachineTile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="TileRoot"
+             Width="170" Height="120" Margin="0,0,12,12" Cursor="Hand">
+
+    <!--
+        This is the look of one tile, written once.
+
+        x:Name="TileRoot" above is what the bindings in here point at. A plain
+        {Binding MachineName} would look at the DataContext this control inherited
+        from the window, which is not what you want. ElementName=TileRoot says
+        "the MachineName property on this control".
+    -->
+
+    <Border Background="{StaticResource CardBackgroundBrush}"
+            BorderBrush="{StaticResource CardBorderBrush}"
+            BorderThickness="1" CornerRadius="6">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Colour bar across the top. Grey until you do the optional part at the end. -->
+            <Border x:Name="StatusBar" Grid.Row="0" CornerRadius="6,6,0,0" Background="#9E9E9E"/>
+
+            <StackPanel Grid.Row="1" Margin="12,10,12,12">
+
+                <!-- ================================================================
+                     WORKED EXAMPLE. This line is finished for you. The two TextBlocks
+                     below follow exactly the same shape.
+                     ================================================================ -->
+                <TextBlock Text="{Binding MachineName, ElementName=TileRoot}"
+                           FontSize="16" FontWeight="SemiBold"/>
+
+                <!-- TODO 3
+                     Replace the literal text below with a binding to this control's
+                     Status property. Same shape as the line above. -->
+                <TextBlock Text="(bind Status)"
+                           FontSize="13" Margin="0,8,0,0"/>
+
+                <!-- TODO 5
+                     Replace the literal text below with a binding to this control's
+                     CpuLoad property. Add StringFormat='CPU: {0}%' inside the binding
+                     so it reads the way the old tile did. -->
+                <TextBlock Text="(bind CpuLoad)"
+                           FontSize="12" Foreground="{StaticResource MutedTextBrush}"/>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
