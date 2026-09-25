@@ -134,12 +134,15 @@ namespace LabStatusBoard.Controls
         // The "this" says which element the event is coming from. That is what
         // e.OriginalSource reports at the other end.
         // --------------------------------------------------------------------
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonUp(e);
 
-        // protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
-        // {
-        //     base.OnMouseLeftButtonUp(e);
-        //
-        //     // your RaiseEvent call goes here
-        // }
+            // your RaiseEvent call goes here
+            RaiseEvent(new RoutedEventArgs(MachineSelectedEvent, this));
+            
+        }
+
+
     }
 }

@@ -50,6 +50,12 @@ namespace LabStatusBoard
         // --------------------------------------------------------------------
         private void OnMachineSelected(object sender, RoutedEventArgs e)
         {
+            if (e.OriginalSource is MachineTile tile && tile.DataContext is LabMachine machine)
+            {
+                DetailFields.DataContext = machine;
+                DetailPlaceholder.Visibility = Visibility.Collapsed;
+                DetailFields.Visibility = Visibility.Visible;
+            }
 
         }
     }
