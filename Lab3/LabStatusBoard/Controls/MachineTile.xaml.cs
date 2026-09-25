@@ -65,7 +65,18 @@ namespace LabStatusBoard.Controls
         // TODO 4
         // Same again for CpuLoad, of type int, defaulting to 0.
         // --------------------------------------------------------------------
+        public static readonly DependencyProperty CpuLoadProperty =
+            DependencyProperty.Register(
+                nameof(CpuLoad),
+                typeof(int),
+                typeof(MachineTile),
+                new PropertyMetadata(0));
 
+        public int CpuLoad
+        {
+            get => (int)GetValue(CpuLoadProperty);
+            set => SetValue(CpuLoadProperty, value);
+        }
 
         // ====================================================================
         // PART 2: telling the window that this tile was clicked.

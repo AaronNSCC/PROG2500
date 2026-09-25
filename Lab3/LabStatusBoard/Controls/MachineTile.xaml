@@ -37,7 +37,7 @@
                 <!-- TODO 3
                      Replace the literal text below with a binding to this control's
                      Status property. Same shape as the line above. -->
-                <TextBlock Text="(bind Status)"
+                <TextBlock Text="{Binding Status, ElementName=TileRoot}"
                            FontSize="13" Margin="0,8,0,0"/>
 
                 <!-- TODO 5
