@@ -47,6 +47,18 @@ namespace LabStatusBoard.Controls
         // Remember the naming rule: the field is StatusProperty, the property is
         // Status. WPF finds one from the other by name, so a typo breaks it.
         // --------------------------------------------------------------------
+        public static readonly DependencyProperty StatusProperty =
+            DependencyProperty.Register(
+                nameof(Status),
+                typeof(MachineStatus),
+                typeof(MachineTile),
+                new PropertyMetadata(MachineStatus.Available));
+
+        public MachineStatus Status
+        {
+            get => (MachineStatus)GetValue(StatusProperty);
+            set => SetValue(StatusProperty, value);
+        }
 
 
         // --------------------------------------------------------------------

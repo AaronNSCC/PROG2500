@@ -63,17 +63,10 @@
                              all three lines will not build. Comment those two out, run
                              with MachineName only, then put each one back as you add its
                              property in TODO 2 and TODO 4. -->
-                        <Border Width="170" Height="120" Margin="0,0,12,12"
-                                Background="{StaticResource CardBackgroundBrush}"
-                                BorderBrush="{StaticResource CardBorderBrush}"
-                                BorderThickness="1" CornerRadius="6">
-                            <StackPanel Margin="12,10,12,12">
-                                <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="SemiBold"/>
-                                <TextBlock Text="{Binding Status}" FontSize="13" Margin="0,8,0,0"/>
-                                <TextBlock Text="{Binding CpuLoad, StringFormat='CPU: {0}%'}" FontSize="12"
-                                           Foreground="{StaticResource MutedTextBrush}"/>
-                            </StackPanel>
-                        </Border>
+                        <controls:MachineTile MachineName="{Binding Name}" 
+                                              Width="170" Height="120" Margin="0,0,12,12" />
+                        <!-- Status="{Binding Status}"-->
+                        <!-- CpuLoad="{Binding CpuLoad}"-->
 
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
