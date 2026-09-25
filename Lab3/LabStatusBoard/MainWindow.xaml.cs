@@ -56,7 +56,6 @@ namespace LabStatusBoard
                 DetailPlaceholder.Visibility = Visibility.Collapsed;
                 DetailFields.Visibility = Visibility.Visible;
             }
-
         }
     }
 }
