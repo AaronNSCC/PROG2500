@@ -64,9 +64,11 @@
                              with MachineName only, then put each one back as you add its
                              property in TODO 2 and TODO 4. -->
                         <controls:MachineTile MachineName="{Binding Name}" 
-                                              Width="170" Height="120" Margin="0,0,12,12" />
-                        <!-- Status="{Binding Status}"-->
-                        <!-- CpuLoad="{Binding CpuLoad}"-->
+                                              Width="170" Height="120" Margin="0,0,12,12"
+                                              Status="{Binding Status}"
+                                              CpuLoad="{Binding CpuLoad}" />
+                        <!-- -->
+                        <!-- -->
 
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

@@ -92,6 +92,12 @@ namespace LabStatusBoard.Controls
         // Store it in a public static readonly RoutedEvent called
         // MachineSelectedEvent.
         // --------------------------------------------------------------------
+        public static readonly RoutedEvent MachineSelectedEvent =
+            EventManager.RegisterRoutedEvent(
+                nameof(MachineSelected),
+                RoutingStrategy.Bubble,
+                typeof(RoutedEventHandler),
+                typeof(MachineTile));
 
 
         // --------------------------------------------------------------------
@@ -106,6 +112,11 @@ namespace LabStatusBoard.Controls
         //
         // Fill in the event you registered in TODO 6.
         // --------------------------------------------------------------------
+        public event RoutedEventHandler MachineSelected
+        {
+            add => AddHandler(MachineSelectedEvent, value);
+            remove => RemoveHandler(MachineSelectedEvent, value);
+        }
 
 
         public MachineTile()

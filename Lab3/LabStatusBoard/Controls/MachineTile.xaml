@@ -44,7 +44,7 @@
                      Replace the literal text below with a binding to this control's
                      CpuLoad property. Add StringFormat='CPU: {0}%' inside the binding
                      so it reads the way the old tile did. -->
-                <TextBlock Text="(bind CpuLoad)"
+                <TextBlock Text="{Binding CpuLoad, ElementName=TileRoot, StringFormat='CPU: {0}%'}"
                            FontSize="12" Foreground="{StaticResource MutedTextBrush}"/>
 
             </StackPanel>
