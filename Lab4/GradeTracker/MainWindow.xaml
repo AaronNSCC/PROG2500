@@ -1,0 +1,56 @@
+<Window x:Class="GradeTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Grade Tracker" Height="640" Width="600">
+
+    <!-- TODO Step 5 (View): set this window's DataContext to your ViewModel,
+         then swap every x:Name and event handler (Click, SelectionChanged)
+         below for a binding. The layout itself doesn't need to change. -->
+
+    <StackPanel>
+        <!-- Adding a student -->
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Text="Name:" Margin="10" FontSize="22" />
+                <TextBlock Text="Grade:" Margin="10" FontSize="22" />
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="NameTextBox" Width="200" Margin="10" FontSize="22" />
+                <TextBox x:Name="GradeTextBox" Width="200" Margin="10" FontSize="22" />
+            </StackPanel>
+            <Button Content="Add Student" Click="AddStudent_Click"
+                    Width="160" Height="50" Margin="10" FontSize="22" />
+        </StackPanel>
+
+        <!-- TODO Step 5 (View): the MessageBoxes are going away, so the user needs
+             another way to find out what's wrong with their input. Add a red
+             TextBlock here, bound to the message property from Step 4. -->
+
+        <!-- The class list -->
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Students:" Margin="10" FontSize="22" />
+            <ListBox x:Name="StudentsListBox" SelectionChanged="StudentsListBox_SelectionChanged"
+                     Width="260" Height="200" Margin="10" FontSize="22" />
+            <Button x:Name="RemoveButton" Content="Remove" Click="RemoveStudent_Click" IsEnabled="False"
+                    Width="110" Height="50" Margin="10" FontSize="22" VerticalAlignment="Top" />
+        </StackPanel>
+
+        <!-- Summary -->
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Text="Students:" Margin="10" FontSize="22" />
+                <TextBlock Text="Class Average:" Margin="10" FontSize="22" />
+                <TextBlock Text="Highest Grade:" Margin="10" FontSize="22" />
+                <TextBlock Text="Lowest Grade:" Margin="10" FontSize="22" />
+                <TextBlock Text="Top Student:" Margin="10" FontSize="22" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock x:Name="CountTextBlock" Margin="10" FontSize="22" />
+                <TextBlock x:Name="AverageTextBlock" Margin="10" FontSize="22" />
+                <TextBlock x:Name="HighestTextBlock" Margin="10" FontSize="22" />
+                <TextBlock x:Name="LowestTextBlock" Margin="10" FontSize="22" />
+                <TextBlock x:Name="TopStudentTextBlock" Margin="10" FontSize="22" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
