@@ -5,13 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:a1_FitnessTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Fitness Tracker" Height="450" Width="800">
 
-        <StackPanel>
-            <TextBox Text="{Binding MinutesGoal}" />
-            <TextBlock Text="{Binding MinutesGoal}" />
-        </StackPanel>
+    <!--STYLING-->
+    <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Fitness Tracker" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" />
+
+        <!-- GROUPBOX SRC: https://wpf-tutorial.com/misc-controls/the-groupbox-control/ -->
+        <GroupBox Header="Summary" Grid.Row="1" Grid.Column="0"/>
+        <GroupBox Header="Set Weekly Goals" Grid.Row="1" Grid.Column="1"/>
+        <GroupBox Header="Existing Activities" Grid.Row="2" Grid.Column="0"/>
+        <GroupBox Header="New Activity" Grid.Row="2" Grid.Column="1"/>
 
     </Grid>
 </Window>
