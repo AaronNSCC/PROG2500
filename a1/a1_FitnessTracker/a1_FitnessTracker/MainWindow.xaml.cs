@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using a1_FitnessTracker.Models;
 
 namespace a1_FitnessTracker
 {
@@ -19,6 +20,7 @@ namespace a1_FitnessTracker
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new FitnessSummary();
         }
     }
 }
