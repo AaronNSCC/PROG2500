@@ -22,5 +22,13 @@ namespace a1_FitnessTracker
             InitializeComponent();
             DataContext = new FitnessSummary();
         }
+
+        private void SetGoalsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // goal boxes use UpdateSourceTrigger=Explicit - send their values to the binding on btn click
+            // https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingoperations.getbindingexpression?view=windowsdesktop-10.0
+            MinutesGoalTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            CaloriesGoalTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
     }
 }

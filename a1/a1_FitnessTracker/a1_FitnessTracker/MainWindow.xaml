@@ -28,8 +28,37 @@
         <TextBlock Text="Fitness Tracker" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" />
 
         <!-- GROUPBOX SRC: https://wpf-tutorial.com/misc-controls/the-groupbox-control/ -->
-        <GroupBox Header="Summary" Grid.Row="1" Grid.Column="0"/>
-        <GroupBox Header="Set Weekly Goals" Grid.Row="1" Grid.Column="1"/>
+        <GroupBox Header="Summary" Grid.Row="1" Grid.Column="0">
+            <StackPanel>
+                <TextBlock Text="{Binding MinutesGoal}"/>
+                <TextBlock Text="{Binding CaloriesGoal}"/>
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Header="Set Weekly Goals" Grid.Row="1" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Minutes Per Week:" Grid.Row="0" Grid.Column="0"/>
+                <!--  UpdateSourceTrigger SRC: https://wpf-tutorial.com/data-binding/the-update-source-trigger-property/-->
+                <TextBox x:Name="MinutesGoalTextBox" Text="{Binding MinutesGoal, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         Grid.Row="0" Grid.Column="1"/>
+
+                <Label Content="Calories Per Week:" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="CaloriesGoalTextBox" Text="{Binding CaloriesGoal, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         Grid.Row="1" Grid.Column="1"/>
+
+                <Button x:Name="SetGoalsButton" Content="Set Goals" Click="SetGoalsButton_Click" Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+        </GroupBox>
         <GroupBox Header="Existing Activities" Grid.Row="2" Grid.Column="0"/>
         <GroupBox Header="New Activity" Grid.Row="2" Grid.Column="1"/>
 

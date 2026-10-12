@@ -14,6 +14,14 @@ namespace a1_FitnessTracker.Models
             get => _minutesGoal;
             set { _minutesGoal = value; OnPropertyChanged(); }
         }
+
+        private int _caloriesGoal = 2000;
+        public int CaloriesGoal
+        {
+            get => _caloriesGoal;
+            set { _caloriesGoal = value; OnPropertyChanged(); }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string? propertyName = null)
