@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:a1_FitnessTracker"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <!-- COLOR PALETTE -->
+        <SolidColorBrush x:Key="PageBackgroundBrush" Color="#F5EFE1" />
+        <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#E5D3AF" />
+        <SolidColorBrush x:Key="TitleBrush" Color="#790D16" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#AEC4D4" />
     </Application.Resources>
 </Application>

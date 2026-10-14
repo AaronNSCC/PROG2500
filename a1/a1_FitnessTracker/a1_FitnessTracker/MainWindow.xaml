@@ -5,12 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:a1_FitnessTracker"
         mc:Ignorable="d"
-        Title="Fitness Tracker" Height="450" Width="800">
+        Title="Fitness Tracker" Height="450" Width="800"
+        Background="{StaticResource PageBackgroundBrush}" >
 
     <!--STYLING-->
     <Window.Resources>
+        <!-- GROUPBOX -->
         <Style TargetType="GroupBox">
             <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Background" Value="{StaticResource PanelBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="14" FontWeight="SemiBold"
+                           Foreground="{StaticResource TitleBrush}" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- TITLE -->
+        <Style x:Key="TitleTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="{StaticResource TitleBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,10" />
         </Style>
         <!-- Grey out Add Activity Btn if a field is missing -->
         <Style x:Key="AddActivityButtonStyle" TargetType="Button">
@@ -52,7 +74,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Fitness Tracker" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" />
+        <TextBlock Text="Fitness Tracker" Style="{StaticResource TitleTextStyle}"
+                   Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" />
 
         <!-- GROUPBOX SRC: https://wpf-tutorial.com/misc-controls/the-groupbox-control/ -->
         <!-- STRING FORMAT SRC: https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.stringformat?view=windowsdesktop-10.0-->
