@@ -26,6 +26,19 @@ namespace a1_FitnessTracker.Models
         // List that holds every activity - announces when activities are added/removed
         public ObservableCollection<Activity> Activities { get; } = new ObservableCollection<Activity>();
 
+        public int TotalMinutes => Activities.Sum(a => a.Minutes);
+        public int TotalCalories => Activities.Sum(a => a.Calories);
+
+        public FitnessSummary() // constructor method
+        {
+            // when an activity is added/removed the totals need to be re-read by the UI
+            Activities.CollectionChanged += (sender, e) =>
+            {
+                OnPropertyChanged(nameof(TotalMinutes));
+                OnPropertyChanged(nameof(TotalCalories));
+            };
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)

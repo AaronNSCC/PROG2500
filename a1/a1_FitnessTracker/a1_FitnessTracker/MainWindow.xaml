@@ -67,14 +67,15 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label Content="Total Duration:" Grid.Row="0" Grid.Column="0" />
-                <TextBlock Text="0 mins" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding TotalMinutes, StringFormat='{}{0} mins'}"
+                           Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
                 
                 <Label Content="Total Calories Burned:" Grid.Row="1" Grid.Column="0" />
-                <TextBlock Text="0 mins" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding TotalCalories, StringFormat='{}{0} calories'}"
+                           Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
 
                 <Label Content="Goal Progress:" Grid.Row="2" Grid.Column="0" />
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
