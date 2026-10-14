@@ -35,6 +35,7 @@
             </StackPanel>
         </GroupBox>
         
+        <!-- WEEKLY GOALS GROUP -->
         <GroupBox Header="Set Weekly Goals" Grid.Row="1" Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -56,11 +57,49 @@
                 <TextBox x:Name="CaloriesGoalTextBox" Text="{Binding CaloriesGoal, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
                          Grid.Row="1" Grid.Column="1"/>
 
-                <Button x:Name="SetGoalsButton" Content="Set Goals" Click="SetGoalsButton_Click" Grid.Row="2" Grid.Column="1"/>
+                <Button x:Name="SetGoalsButton" Content="Set Goals" Click="SetGoalsButton_Click" Grid.Row="2" Grid.Column="1"
+                        Margin="0,10,0,0"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Existing Activities" Grid.Row="2" Grid.Column="0"/>
-        <GroupBox Header="New Activity" Grid.Row="2" Grid.Column="1"/>
+        
+        
+        <GroupBox Header="Existing Activities" Grid.Row="2" Grid.Column="0">
+            
+        </GroupBox>
+        
+        <!-- NEW ACTIVITY GROUP-->
+        <GroupBox Header="New Activity" Grid.Row="2" Grid.Column="1">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Activity Name:" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox x:Name="ActivityNameTextBox" Grid.Row="0" Grid.Column="1"/>
+
+                    <Label Content="Time (minutes):" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox x:Name="ActivityMinutesTextBox" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Content="Calories Burned:" Grid.Row="2" Grid.Column="0"/>
+                    <TextBox x:Name="ActivityCaloriesTextBox" Grid.Row="2" Grid.Column="1"/>
+
+                    <Label Content="Date:" Grid.Row="3" Grid.Column="0"/>
+                    <TextBox x:Name="ActivityDateTextBox" Grid.Row="3" Grid.Column="1"/>
+
+                    <Button x:Name="AddActivityButton" Content="Add Activity" Grid.Row="4" Grid.Column="1"
+                            Margin="0,10,0,0"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
 
     </Grid>
 </Window>
