@@ -12,6 +12,33 @@
         <Style TargetType="GroupBox">
             <Setter Property="Margin" Value="5" />
         </Style>
+        <!-- Grey out Add Activity Btn if a field is missing -->
+        <Style x:Key="AddActivityButtonStyle" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text, ElementName=ActivityNameTextBox}" Value="" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Text, ElementName=ActivityMinutesTextBox}" Value="" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Text, ElementName=ActivityCaloriesTextBox}" Value="" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding SelectedDate, ElementName=ActivityDatePicker}" Value="{x:Null}" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SetGoalsButtonStyle" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text, ElementName=MinutesGoalTextBox}" Value="" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Text, ElementName=CaloriesGoalTextBox}" Value="" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     
     <Grid Margin="10">
@@ -79,8 +106,9 @@
                 <TextBox x:Name="CaloriesGoalTextBox" Text="{Binding CaloriesGoal, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
                          Grid.Row="1" Grid.Column="1"/>
 
-                <Button x:Name="SetGoalsButton" Content="Set Goals" Click="SetGoalsButton_Click" Grid.Row="2" Grid.Column="1"
-                        Margin="0,10,0,0"/>
+                <Button x:Name="SetGoalsButton" Content="Set Goals" Click="SetGoalsButton_Click"
+                        Style="{StaticResource SetGoalsButtonStyle}"
+                        Grid.Row="2" Grid.Column="1" Margin="0,10,0,0"/>
             </Grid>
         </GroupBox>
 
@@ -124,11 +152,13 @@
                     <Label Content="Calories Burned:" Grid.Row="2" Grid.Column="0"/>
                     <TextBox x:Name="ActivityCaloriesTextBox" Grid.Row="2" Grid.Column="1"/>
 
+                    <!-- Date Picker SRC: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/datepicker -->
                     <Label Content="Date:" Grid.Row="3" Grid.Column="0"/>
-                    <TextBox x:Name="ActivityDateTextBox" Grid.Row="3" Grid.Column="1"/>
+                    <DatePicker x:Name="ActivityDatePicker" Grid.Row="3" Grid.Column="1"/>
 
-                    <Button x:Name="AddActivityButton" Content="Add Activity" Grid.Row="4" Grid.Column="1"
-                            Margin="0,10,0,0"/>
+                    <Button x:Name="AddActivityButton" Content="Add Activity" Click="AddActivityButton_Click"
+                            Style="{StaticResource AddActivityButtonStyle}"
+                            Grid.Row="4" Grid.Column="1" Margin="0,10,0,0"/>
                 </Grid>
             </StackPanel>
         </GroupBox>

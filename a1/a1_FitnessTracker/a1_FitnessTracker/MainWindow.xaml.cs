@@ -22,9 +22,10 @@ namespace a1_FitnessTracker
             InitializeComponent();
             // create data object
             FitnessSummary summary = new FitnessSummary();
-            // create fake activity (for now) - delete when Add activity works
-            summary.Activities.Add(new Activity { Name = "Test 1", Minutes = 35, Calories = 220, Date = DateTime.Today});
             DataContext = summary;
+
+            // start the date picker on today's date
+            ActivityDatePicker.SelectedDate = DateTime.Today;
         }
 
         private void SetGoalsButton_Click(object sender, RoutedEventArgs e)
@@ -33,6 +34,34 @@ namespace a1_FitnessTracker
             // https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingoperations.getbindingexpression?view=windowsdesktop-10.0
             MinutesGoalTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             CaloriesGoalTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
+
+        private void AddActivityButton_Click(object sender, RoutedEventArgs e)
+        {
+            // try parsing int values (must be greater than 0) - textbox is passing a string
+            if (!int.TryParse(ActivityMinutesTextBox.Text, out int minutes) || minutes <= 0 ||
+                !int.TryParse(ActivityCaloriesTextBox.Text, out int calories) || calories <= 0)
+            {
+                MessageBox.Show("Minutes and calories must be whole numbers greater than 0.", "Invalid number");
+                return;
+            }
+
+            Activity activity = new Activity
+            {
+                Name = ActivityNameTextBox.Text.Trim(),
+                Minutes = minutes,
+                Calories = calories,
+                Date = ActivityDatePicker.SelectedDate!.Value
+            };
+
+            // cast DataContext to FitnessSummary so it reaches the Activities list
+            ((FitnessSummary)DataContext).Activities.Add(activity);
+
+            // reset the form values for the next activity to be entered
+            ActivityNameTextBox.Clear();
+            ActivityMinutesTextBox.Clear();
+            ActivityCaloriesTextBox.Clear();
+            ActivityDatePicker.SelectedDate = DateTime.Today;
         }
     }
 }
