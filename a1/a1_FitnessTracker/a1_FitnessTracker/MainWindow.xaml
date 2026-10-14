@@ -28,11 +28,33 @@
         <TextBlock Text="Fitness Tracker" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" />
 
         <!-- GROUPBOX SRC: https://wpf-tutorial.com/misc-controls/the-groupbox-control/ -->
+        <!-- STRING FORMAT SRC: https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.stringformat?view=windowsdesktop-10.0-->
+        <!-- SUMMARY GROUP -->
         <GroupBox Header="Summary" Grid.Row="1" Grid.Column="0">
-            <StackPanel>
-                <TextBlock Text="{Binding MinutesGoal}"/>
-                <TextBlock Text="{Binding CaloriesGoal}"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Total Duration:" Grid.Row="0" Grid.Column="0" />
+                <TextBlock Text="0 mins" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
+                
+                <Label Content="Total Calories Burned:" Grid.Row="1" Grid.Column="0" />
+                <TextBlock Text="0 mins" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+
+                <Label Content="Goal Progress:" Grid.Row="2" Grid.Column="0" />
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding MinutesGoal, StringFormat='0 / {0} mins, '}"/>
+                    <TextBlock Text="{Binding CaloriesGoal, StringFormat='0 / {0} calories '}"/>
+                </StackPanel>
+            </Grid>
         </GroupBox>
         
         <!-- WEEKLY GOALS GROUP -->
@@ -61,13 +83,22 @@
                         Margin="0,10,0,0"/>
             </Grid>
         </GroupBox>
-        
-        
+
+        <!-- EXISTING ACTIVITIES GROUP -->
         <GroupBox Header="Existing Activities" Grid.Row="2" Grid.Column="0">
-            
+            <ListView x:Name="ActivitiesListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Activity" />
+                        <GridViewColumn Header="Minutes" />
+                        <GridViewColumn Header="Calories" />
+                        <GridViewColumn Header="Date" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </GroupBox>
         
-        <!-- NEW ACTIVITY GROUP-->
+        <!-- NEW ACTIVITY GROUP -->
         <GroupBox Header="New Activity" Grid.Row="2" Grid.Column="1">
             <StackPanel>
                 <Grid>
