@@ -5,9 +5,12 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          <!-- COLOR PALETTE -->
-        <SolidColorBrush x:Key="PageBackgroundBrush" Color="#F5EFE1" />
-        <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#E5D3AF" />
-        <SolidColorBrush x:Key="TitleBrush" Color="#790D16" />
-        <SolidColorBrush x:Key="AccentBrush" Color="#AEC4D4" />
+        <SolidColorBrush x:Key="PageBackgroundBrush" Color="#DCE8F7" />
+        <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#F4F8FD" />
+        <SolidColorBrush x:Key="TitleBrush" Color="#0B1F4A" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#2E5C9E" />
+        <SolidColorBrush x:Key="TextBrush" Color="#1A2B4C" />
+        <!-- FONT -->
+        <FontFamily x:Key="AppFont">Bahnschrift Light</FontFamily>
     </Application.Resources>
 </Application>

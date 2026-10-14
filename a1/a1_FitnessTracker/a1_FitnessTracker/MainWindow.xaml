@@ -6,14 +6,16 @@
         xmlns:local="clr-namespace:a1_FitnessTracker"
         mc:Ignorable="d"
         Title="Fitness Tracker" Height="450" Width="800"
-        Background="{StaticResource PageBackgroundBrush}" >
+        Foreground="{StaticResource TextBrush}"
+        Background="{StaticResource PageBackgroundBrush}"
+        FontFamily="{StaticResource AppFont}" >
 
     <!--STYLING-->
     <Window.Resources>
         <!-- GROUPBOX -->
         <Style TargetType="GroupBox">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Padding" Value="2" />
             <Setter Property="Background" Value="{StaticResource PanelBackgroundBrush}" />
             <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
             <Setter Property="BorderThickness" Value="3" />
@@ -60,6 +62,10 @@
                     <Setter Property="IsEnabled" Value="False" />
                 </DataTrigger>
             </Style.Triggers>
+        </Style>
+        <!-- LABELS -->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
         </Style>
     </Window.Resources>
     
