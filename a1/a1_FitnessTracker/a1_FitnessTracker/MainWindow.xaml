@@ -78,10 +78,7 @@
                            Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
 
                 <Label Content="Goal Progress:" Grid.Row="2" Grid.Column="0" />
-                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding MinutesGoal, StringFormat='0 / {0} mins, '}"/>
-                    <TextBlock Text="{Binding CaloriesGoal, StringFormat='0 / {0} calories '}"/>
-                </StackPanel>
+                <TextBlock Text="{Binding GoalProgressText}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>
         

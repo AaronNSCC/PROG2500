@@ -13,21 +13,23 @@ namespace a1_FitnessTracker.Models
         public int MinutesGoal
         {
             get => _minutesGoal;
-            set { _minutesGoal = value; OnPropertyChanged(); }
+            set { _minutesGoal = value; OnPropertyChanged(); OnPropertyChanged(nameof(GoalProgressText)); }
         }
 
         private int _caloriesGoal = 2000;
         public int CaloriesGoal
         {
             get => _caloriesGoal;
-            set { _caloriesGoal = value; OnPropertyChanged(); }
+            set { _caloriesGoal = value; OnPropertyChanged(); OnPropertyChanged(nameof(GoalProgressText)); }
         }
 
         // List that holds every activity - announces when activities are added/removed
         public ObservableCollection<Activity> Activities { get; } = new ObservableCollection<Activity>();
 
-        public int TotalMinutes => Activities.Sum(a => a.Minutes);
-        public int TotalCalories => Activities.Sum(a => a.Calories);
+        public int TotalMinutes => Activities.Sum(a => a.Minutes); // for each activity in activities- sum the mins
+        public int TotalCalories => Activities.Sum(a => a.Calories); // for each activity in activities- sum the cals
+
+        public string GoalProgressText => $"{TotalMinutes} / {MinutesGoal} mins, {TotalCalories} / {CaloriesGoal} cals";
 
         public FitnessSummary() // constructor method
         {
@@ -36,6 +38,7 @@ namespace a1_FitnessTracker.Models
             {
                 OnPropertyChanged(nameof(TotalMinutes));
                 OnPropertyChanged(nameof(TotalCalories));
+                OnPropertyChanged(nameof(GoalProgressText));
             };
         }
 
