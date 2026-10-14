@@ -20,7 +20,11 @@ namespace a1_FitnessTracker
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new FitnessSummary();
+            // create data object
+            FitnessSummary summary = new FitnessSummary();
+            // create fake activity (for now) - delete when Add activity works
+            summary.Activities.Add(new Activity { Name = "Test 1", Minutes = 35, Calories = 220, Date = DateTime.Today});
+            DataContext = summary;
         }
 
         private void SetGoalsButton_Click(object sender, RoutedEventArgs e)

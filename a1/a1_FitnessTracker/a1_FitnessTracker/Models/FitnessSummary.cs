@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Collections.ObjectModel;
 
 namespace a1_FitnessTracker.Models
 {
@@ -21,6 +22,9 @@ namespace a1_FitnessTracker.Models
             get => _caloriesGoal;
             set { _caloriesGoal = value; OnPropertyChanged(); }
         }
+
+        // List that holds every activity - announces when activities are added/removed
+        public ObservableCollection<Activity> Activities { get; } = new ObservableCollection<Activity>();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
