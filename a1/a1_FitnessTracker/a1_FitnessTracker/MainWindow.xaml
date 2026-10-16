@@ -111,6 +111,16 @@
         <!-- SUMMARY VALUES -->
         <Style x:Key="SummaryValueStyle" TargetType="TextBlock" >
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="15,0,0,0" />
+        </Style>
+        <!-- PROGRESS BARS -->
+        <Style TargetType="ProgressBar">
+            <Setter Property="Height" Value="14" />
+            <Setter Property="Margin" Value="15,2,15,2" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </Window.Resources>
     
@@ -141,6 +151,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label Content="Total Duration:" Grid.Row="0" Grid.Column="0" />
@@ -154,6 +166,15 @@
                 <Label Content="Goal Progress:" Grid.Row="2" Grid.Column="0" />
                 <TextBlock Text="{Binding GoalProgressText}"
                            Grid.Row="2" Grid.Column="1" Style="{StaticResource SummaryValueStyle}"/>
+
+                <!-- PROGRESS BARS SRC: https://learn.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.progressbar?view=winrt-28000 -->
+                <Label Content="Minutes Goal:" Grid.Row="3" Grid.Column="0" />
+                <ProgressBar Value="{Binding TotalMinutes, Mode=OneWay}" Maximum="{Binding MinutesGoal}"
+                             Grid.Row="3" Grid.Column="1" />
+
+                <Label Content="Calories Goal:" Grid.Row="4" Grid.Column="0" />
+                <ProgressBar Value="{Binding TotalCalories, Mode=OneWay}" Maximum="{Binding CaloriesGoal}"
+                             Grid.Row="4" Grid.Column="1" />
             </Grid>
         </GroupBox>
         
