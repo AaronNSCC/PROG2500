@@ -10,6 +10,8 @@
         Background="{StaticResource PageBackgroundBrush}"
         FontFamily="{StaticResource AppFont}" >
 
+    <!-- READY FOR MARKING -->
+    
     <!--STYLING-->
     <Window.Resources>
         <!-- GROUPBOX -->
