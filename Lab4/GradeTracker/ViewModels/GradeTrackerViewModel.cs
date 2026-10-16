@@ -64,6 +64,8 @@ public class GradeTrackerViewModel : INotifyPropertyChanged
     public double ClassAverage => Students.Count == 0 ? 0 : Students.Average(st => st.Grade);
     public double HighestGrade => Students.Count == 0 ? 0 : Students.Max(st => st.Grade);
     public double LowestGrade => Students.Count == 0 ? 0 : Students.Min(st => st.Grade);
+    // ENHANCEMENT: add Student's Passing count (anything 50 and over considered passing).
+    public double PassingCount => Students.Count(st => st.Grade >= 50);
 
     public GradeTrackerViewModel()
     {
@@ -78,6 +80,7 @@ public class GradeTrackerViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(ClassAverage));
         OnPropertyChanged(nameof(HighestGrade));
         OnPropertyChanged(nameof(LowestGrade));
+        OnPropertyChanged(nameof(PassingCount));
     }
 
 

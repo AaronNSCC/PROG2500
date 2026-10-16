@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:GradeTracker.ViewModels"
-        Title="Grade Tracker" Height="640" Width="600">
+        Title="Grade Tracker" Height="680" Width="600">
 
     <!-- TODO Step 5 (View): set this window's DataContext to your ViewModel,
          then swap every x:Name and event handler (Click, SelectionChanged)
@@ -49,6 +49,8 @@
                 <TextBlock Text="Highest Grade:" Margin="10" FontSize="22" />
                 <TextBlock Text="Lowest Grade:" Margin="10" FontSize="22" />
                 <TextBlock Text="Top Student:" Margin="10" FontSize="22" />
+                <!-- ENHANCEMENT ADDED NUM OF STUDENT PASSING COUNT -->
+                <TextBlock Text="Number of Passing Students:" Margin="10" FontSize="22" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="{Binding NumberOfStudents}" Margin="10" FontSize="22" />
@@ -56,6 +58,8 @@
                 <TextBlock Text="{Binding HighestGrade, StringFormat=0.0}" Margin="10" FontSize="22" />
                 <TextBlock Text="{Binding LowestGrade, StringFormat=0.0}" Margin="10" FontSize="22" />
                 <TextBlock Text="{Binding TopStudent}" Margin="10" FontSize="22" />
+                <!-- ENHANCEMENT ADDED NUM OF STUDENT PASSING COUNT -->
+                <TextBlock Text="{Binding PassingCount}" Margin="10" FontSize="22" />
             </StackPanel>
         </StackPanel>
     </StackPanel>
