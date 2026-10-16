@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:a1_FitnessTracker"
         mc:Ignorable="d"
-        Title="Fitness Tracker" Height="450" Width="800"
+        Title="Fitness Tracker" Height="450" Width="800" MinHeight="450" MinWidth="700"
         Foreground="{StaticResource TextBrush}"
         Background="{StaticResource PageBackgroundBrush}"
         FontFamily="{StaticResource AppFont}" >
@@ -101,6 +101,10 @@
             <Setter Property="Margin" Value="0,2" />
             <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
         </Style>
+        <!-- SUMMARY VALUES -->
+        <Style x:Key="SummaryValueStyle" TargetType="TextBlock" >
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
     </Window.Resources>
     
     <Grid Margin="10">
@@ -115,7 +119,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Fitness Tracker" Style="{StaticResource TitleTextStyle}"
-                   Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
+                   Grid.Row="0" Grid.ColumnSpan="2" />
 
         <!-- GROUPBOX SRC: https://wpf-tutorial.com/misc-controls/the-groupbox-control/ -->
         <!-- STRING FORMAT SRC: https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.stringformat?view=windowsdesktop-10.0-->
@@ -133,15 +137,16 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Total Duration:" Grid.Row="0" Grid.Column="0" />
-                <TextBlock Text="{Binding TotalMinutes, StringFormat='{}{0} mins'}"
-                           Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding TotalMinutes, StringFormat='{}{0} minutes'}"
+                           Grid.Row="0" Grid.Column="1" Style="{StaticResource SummaryValueStyle}" />
                 
                 <Label Content="Total Calories Burned:" Grid.Row="1" Grid.Column="0" />
                 <TextBlock Text="{Binding TotalCalories, StringFormat='{}{0} calories'}"
-                           Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+                           Grid.Row="1" Grid.Column="1" Style="{StaticResource SummaryValueStyle}" />
 
                 <Label Content="Goal Progress:" Grid.Row="2" Grid.Column="0" />
-                <TextBlock Text="{Binding GoalProgressText}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding GoalProgressText}"
+                           Grid.Row="2" Grid.Column="1" Style="{StaticResource SummaryValueStyle}"/>
             </Grid>
         </GroupBox>
         
@@ -190,38 +195,36 @@
         
         <!-- NEW ACTIVITY GROUP -->
         <GroupBox Header="New Activity" Grid.Row="2" Grid.Column="1">
-            <StackPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                    <Label Content="Activity Name:" Grid.Row="0" Grid.Column="0"/>
-                    <TextBox x:Name="ActivityNameTextBox" Grid.Row="0" Grid.Column="1"/>
+                <Label Content="Activity Name:" Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="ActivityNameTextBox" Grid.Row="0" Grid.Column="1"/>
 
-                    <Label Content="Time (minutes):" Grid.Row="1" Grid.Column="0"/>
-                    <TextBox x:Name="ActivityMinutesTextBox" Grid.Row="1" Grid.Column="1"/>
+                <Label Content="Time (minutes):" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="ActivityMinutesTextBox" Grid.Row="1" Grid.Column="1"/>
 
-                    <Label Content="Calories Burned:" Grid.Row="2" Grid.Column="0"/>
-                    <TextBox x:Name="ActivityCaloriesTextBox" Grid.Row="2" Grid.Column="1"/>
+                <Label Content="Calories Burned:" Grid.Row="2" Grid.Column="0"/>
+                <TextBox x:Name="ActivityCaloriesTextBox" Grid.Row="2" Grid.Column="1"/>
 
-                    <!-- Date Picker SRC: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/datepicker -->
-                    <Label Content="Date:" Grid.Row="3" Grid.Column="0"/>
-                    <DatePicker x:Name="ActivityDatePicker" Grid.Row="3" Grid.Column="1"/>
+                <!-- Date Picker SRC: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/datepicker -->
+                <Label Content="Date:" Grid.Row="3" Grid.Column="0"/>
+                <DatePicker x:Name="ActivityDatePicker" Grid.Row="3" Grid.Column="1"/>
 
-                    <Button x:Name="AddActivityButton" Content="Add Activity" Click="AddActivityButton_Click"
+                <Button x:Name="AddActivityButton" Content="Add Activity" Click="AddActivityButton_Click"
                             Style="{StaticResource AddActivityButtonStyle}"
                             Grid.Row="4" Grid.Column="1" />
-                </Grid>
-            </StackPanel>
+            </Grid>
         </GroupBox>
 
     </Grid>
