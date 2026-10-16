@@ -32,6 +32,14 @@ Enhancements to be marked:
 	  CollectionChanged event). 
 	- Button is disabled until an activity as selected and inherits styling from BaseButtonStyle.
 
+6. Goal progress bars
+	* MainWindow.xaml: ProgressBar 
+	- Progress bars for the minutes and calories totals - filled bar (max value) are the goals.
+	- Value is bound to the total and Maximum is bound to the goal - bars update as activities or goals update.
+	- Styled with implicit style using the app's color palette (Window.Resources).
+
+SOURCES USED (for research and uses - never copy-pasted)
+All references are provided in-line as code comments for the code it was used. 
 
 AI USAGE
 I used Claude while building this assignment (never copy-paste) to:
@@ -39,6 +47,3 @@ I used Claude while building this assignment (never copy-paste) to:
 	- Plan the order to build each section and estimate time it might take.
 	- Suggesting color palette based on reference image.
 	- Finding bugs (ex. typo in a binding name).
-
-SOURCES USED (for research and uses - never copy-pasted)
-All references used are provided as code comments above the code it was used for. 
