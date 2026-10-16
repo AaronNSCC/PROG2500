@@ -85,6 +85,13 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="RemoveActivityButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedItem, ElementName=ActivitiesListView}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
         <!-- LABELS -->
         <Style TargetType="Label">
             <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
@@ -180,17 +187,28 @@
 
         <!-- EXISTING ACTIVITIES GROUP -->
         <GroupBox Header="Existing Activities" Grid.Row="2" Grid.Column="0">
-            <ListView x:Name="ActivitiesListView" ItemsSource="{Binding Activities}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Activity" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Minutes" DisplayMemberBinding="{Binding Minutes}" />
-                        <GridViewColumn Header="Calories" DisplayMemberBinding="{Binding Calories}" />
-                        <!--DateTime Format SRC: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/datetime-xaml-syntax-->
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='MMM. d, yyyy'}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <ListView x:Name="ActivitiesListView" ItemsSource="{Binding Activities}" Grid.Row="0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Activity" DisplayMemberBinding="{Binding Name}" />
+                            <GridViewColumn Header="Minutes" DisplayMemberBinding="{Binding Minutes}" />
+                            <GridViewColumn Header="Calories" DisplayMemberBinding="{Binding Calories}" />
+                            <!--DateTime Format SRC: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/datetime-xaml-syntax-->
+                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='MMM. d, yyyy'}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button x:Name="RemoveActivityButton" Content="Remove Activity" Click="RemoveActivityButton_Click"
+                        Style="{StaticResource RemoveActivityButtonStyle}" Grid.Row="1" />
+
+            </Grid>
         </GroupBox>
         
         <!-- NEW ACTIVITY GROUP -->

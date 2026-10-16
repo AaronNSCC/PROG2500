@@ -63,5 +63,14 @@ namespace a1_FitnessTracker
             ActivityCaloriesTextBox.Clear();
             ActivityDatePicker.SelectedDate = DateTime.Today;
         }
+
+        private void RemoveActivityButton_Click(object sender, RoutedEventArgs e)
+        {
+            // remove the selected activity - ActivitiesCollectionChanged in FitnessSummary will update the summary totals
+            if (ActivitiesListView.SelectedItem is Activity activity)
+            {
+                ((FitnessSummary)DataContext).Activities.Remove(activity);
+            }
+        }
     }
 }
