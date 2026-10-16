@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using GradeTracker.Models;
 
 namespace GradeTracker;
 
@@ -97,15 +98,3 @@ public partial class MainWindow : Window
     }
 }
 
-// TODO Step 1 (Model): move this class into its own file in a Models folder,
-// with a namespace to match. Nothing about the class itself needs to change.
-public class Student
-{
-    public string Name { get; set; } = "";
-    public double Grade { get; set; }
-
-    public override string ToString()
-    {
-        return $"{Name} ({Grade:0.#})";
-    }
-}
