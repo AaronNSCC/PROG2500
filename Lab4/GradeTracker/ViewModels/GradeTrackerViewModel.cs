@@ -7,9 +7,34 @@ namespace GradeTracker.ViewModels;
 // a Button, or a MessageBox.
 public class GradeTrackerViewModel : INotifyPropertyChanged
 {
-    // TODO Step 2 (Inputs): add a property for each box the user types into.
-    // Each one announces itself when it changes.
-    // Think about what type the grade should be while the user is still typing it.
+    // Step 2 (Inputs): add a property for each box the user types into. = (Name and Grade)
+    // Each one announces itself when it changes. = (OnPropertyChanged)
+    // Think about what type the grade should be while the user is still typing it. = (String) it'll change to a number when it's used.
+
+    // NAME
+    private string name = "";
+    public string Name
+    {
+        get => name;
+        set
+        {
+            name = value;
+            OnPropertyChanged(nameof(Name));
+        }
+    }
+
+    // GRADE
+    private string gradeText = "";
+    public string GradeText
+    {
+        get => gradeText;
+        set
+        {
+            gradeText = value;
+            OnPropertyChanged(nameof(GradeText));
+        }
+    }
+
 
     // TODO Step 3 (List and summary): add the list of students, and a property
     // for the selected student. Then add the five summary values as calculated
