@@ -109,7 +109,25 @@ namespace NorthwindManager
 
         private void DeleteShipperButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO (Step 6): Delete the selected shipper.
+            // (Step 6): Delete the selected shipper.
+            // https://www.learnentityframeworkcore.com/dbcontext/deleting-data
+            var shipper = ShippersGrid.SelectedItem as Shipper; // returns null if nothing's selected
+            if (shipper == null)
+            {
+                MessageBox.Show("Must select a Shipper.");
+                return;
+            }
+            _context.Shippers.Remove(shipper);
+            try
+            {
+                _context.SaveChanges();
+                LoadShippers();
+            } catch (DbUpdateException)
+            {
+                MessageBox.Show("Failed to remove selected Shipper because it has orders.\nShippers with orders can't be removed.");
+                _context.Entry(shipper).State = EntityState.Unchanged;
+            }
+
         }
     }
 }
