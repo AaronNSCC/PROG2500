@@ -7,7 +7,7 @@ namespace NorthwindManager
 {
     public partial class MainWindow : Window
     {
-        // TODO (Step 3): After you scaffold, add "using NorthwindManager.Models;" at the top
+        // (Step 3): After you scaffold, add "using NorthwindManager.Models;" at the top
         // and give the window one NorthwindContext to use everywhere.
         private readonly NorthwindContext _context = new NorthwindContext();
 
@@ -28,7 +28,7 @@ namespace NorthwindManager
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // TODO (Step 3): Show all the products, sorted by name.
+            // (Step 3): Show all the products, sorted by name.
             // passing empty string - will load all products
             LoadProducts("");
 
@@ -46,7 +46,16 @@ namespace NorthwindManager
 
         private void ProductsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // TODO (Step 4): Put the selected product's price in PriceBox.
+            // (Step 4): Put the selected product's price in PriceBox.
+            var product = ProductsGrid.SelectedItem as Product;
+            if (product != null) 
+            {
+                PriceBox.Text = product.UnitPrice?.ToString("0.00");
+            } else
+            {
+                PriceBox.Clear();
+            }
+            
         }
 
         private void SavePriceButton_Click(object sender, RoutedEventArgs e)
