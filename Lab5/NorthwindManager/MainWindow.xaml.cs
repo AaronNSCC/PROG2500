@@ -16,7 +16,7 @@ namespace NorthwindManager
             InitializeComponent();
         }
 
-        // helper method to load all products- sorted by name 
+        // (Step 3): helper method to load all products- sorted by name 
         private void LoadProducts(string search)
         {
             var products = _context.Products
@@ -25,6 +25,14 @@ namespace NorthwindManager
                 .ToList();
             ProductsGrid.ItemsSource = products;
         }
+        // (Step 5): helper method to load all shippers- sorted by id
+        private void LoadShippers()
+        {
+            var shippers = _context.Shippers
+                .OrderBy(s => s.ShipperId)
+                .ToList();
+            ShippersGrid.ItemsSource = shippers;
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -32,14 +40,15 @@ namespace NorthwindManager
             // passing empty string - will load all products
             LoadProducts("");
 
-            // TODO (Step 5): Show all the shippers.
+            // (Step 5): Show all the shippers.
+            LoadShippers();
         }
 
         // Products tab
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO (Step 3): Show only the products whose name contains the text in SearchBox.
+            // (Step 3): Show only the products whose name contains the text in SearchBox.
             // A blank search shows them all again.
             LoadProducts(SearchBox.Text.Trim());
         }
@@ -60,7 +69,7 @@ namespace NorthwindManager
 
         private void SavePriceButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO (Step 4): Save the price in PriceBox to the selected product.
+            // (Step 4): Save the price in PriceBox to the selected product.
             var product = ProductsGrid.SelectedItem as Product; // returns null if nothing's selected
             bool validPrice = decimal.TryParse(PriceBox.Text, out decimal setPrice);
             if (product == null)
@@ -83,7 +92,19 @@ namespace NorthwindManager
 
         private void AddShipperButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO (Step 5): Add a new shipper from CompanyBox and PhoneBox.
+            // (Step 5): Add a new shipper from CompanyBox and PhoneBox.
+            if (string.IsNullOrWhiteSpace(CompanyBox.Text))
+            {
+                MessageBox.Show("Must enter a company name.");
+                return;
+            }
+            _context.Shippers.Add(new Shipper { CompanyName = CompanyBox.Text.Trim(), Phone = PhoneBox.Text.Trim() });
+            _context.SaveChanges();
+            // after saving to db- clear the text boxes
+            CompanyBox.Clear();
+            PhoneBox.Clear();
+            // call to refresh
+            LoadShippers();
         }
 
         private void DeleteShipperButton_Click(object sender, RoutedEventArgs e)
