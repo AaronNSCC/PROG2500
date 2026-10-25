@@ -117,12 +117,26 @@ namespace NorthwindManager
                 MessageBox.Show("Must select a Shipper.");
                 return;
             }
+            // ENHANCEMENT 1: Are You Sure message box to confirm deletion
+            // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/how-to-open-message-box
+            string message = "Are you sure you want to remove the selected Shipper?";
+            string caption = "Remove Confirmation";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
+            if (result != MessageBoxResult.Yes)
+            {
+                return;
+            }
+
             _context.Shippers.Remove(shipper);
             try
             {
                 _context.SaveChanges();
                 LoadShippers();
-            } catch (DbUpdateException)
+            } 
+            catch (DbUpdateException)
             {
                 MessageBox.Show("Failed to remove selected Shipper because it has orders.\nShippers with orders can't be removed.");
                 _context.Entry(shipper).State = EntityState.Unchanged;
