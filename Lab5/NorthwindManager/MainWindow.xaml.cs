@@ -64,7 +64,6 @@ namespace NorthwindManager
             {
                 PriceBox.Clear();
             }
-            
         }
 
         private void SavePriceButton_Click(object sender, RoutedEventArgs e)
