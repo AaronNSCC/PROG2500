@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.EntityFrameworkCore;
+using NorthwindManager.Models;
 
 namespace NorthwindManager
 {
@@ -8,15 +9,29 @@ namespace NorthwindManager
     {
         // TODO (Step 3): After you scaffold, add "using NorthwindManager.Models;" at the top
         // and give the window one NorthwindContext to use everywhere.
+        private readonly NorthwindContext _context = new NorthwindContext();
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        // helper method to load all products- sorted by name 
+        private void LoadProducts(string search)
+        {
+            var products = _context.Products
+                .Where(p => p.ProductName.Contains(search))
+                .OrderBy(p => p.ProductName)
+                .ToList();
+            ProductsGrid.ItemsSource = products;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // TODO (Step 3): Show all the products, sorted by name.
+            // passing empty string - will load all products
+            LoadProducts("");
+
             // TODO (Step 5): Show all the shippers.
         }
 
@@ -26,6 +41,7 @@ namespace NorthwindManager
         {
             // TODO (Step 3): Show only the products whose name contains the text in SearchBox.
             // A blank search shows them all again.
+            LoadProducts(SearchBox.Text.Trim());
         }
 
         private void ProductsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
