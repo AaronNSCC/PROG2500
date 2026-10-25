@@ -47,10 +47,10 @@ namespace NorthwindManager
         private void ProductsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // (Step 4): Put the selected product's price in PriceBox.
-            var product = ProductsGrid.SelectedItem as Product;
+            var product = ProductsGrid.SelectedItem as Product; // returns null if nothing's selected
             if (product != null) 
             {
-                PriceBox.Text = product.UnitPrice?.ToString("0.00");
+                PriceBox.Text = product.UnitPrice?.ToString("0.00"); 
             } else
             {
                 PriceBox.Clear();
@@ -61,6 +61,22 @@ namespace NorthwindManager
         private void SavePriceButton_Click(object sender, RoutedEventArgs e)
         {
             // TODO (Step 4): Save the price in PriceBox to the selected product.
+            var product = ProductsGrid.SelectedItem as Product; // returns null if nothing's selected
+            bool validPrice = decimal.TryParse(PriceBox.Text, out decimal setPrice);
+            if (product == null)
+            {
+                MessageBox.Show("Must select a product to set its price.");
+                return;
+            }
+            else if (!validPrice || setPrice < 0)
+            {
+                MessageBox.Show("Must enter a valid price. 0 or higher.");
+                return;
+            }
+
+            product.UnitPrice = setPrice;   // set price
+            _context.SaveChanges();         // save in DB: https://learn.microsoft.com/en-us/ef/core/saving/basic
+            ProductsGrid.Items.Refresh();   // refresh grid
         }
 
         // Shippers tab
