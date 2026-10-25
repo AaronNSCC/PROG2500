@@ -143,5 +143,11 @@ namespace NorthwindManager
             }
 
         }
+
+        // ENHANCEMENT 2: search as you type
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoadProducts(SearchBox.Text.Trim());
+        }
     }
 }

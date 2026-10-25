@@ -33,7 +33,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <TextBlock Text="Product name contains:" />
-                    <TextBox x:Name="SearchBox" Width="220" />
+                    <TextBox x:Name="SearchBox" Width="220" TextChanged="SearchBox_TextChanged" />
                     <Button x:Name="SearchButton" Content="Search" Click="SearchButton_Click" />
                 </StackPanel>
 
