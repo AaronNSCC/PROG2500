@@ -4,9 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChinookMusicApp"
+        xmlns:vm="clr-namespace:ChinookMusicApp.ViewModels"
+        xmlns:views="clr-namespace:ChinookMusicApp.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Chinook Music Store" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+            <views:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ArtistsViewModel}">
+            <views:ArtistsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AlbumsViewModel}">
+            <views:AlbumsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TracksViewModel}">
+            <views:TracksView />
+        </DataTemplate>
+    </Window.Resources>
+    
 
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Navigate">
+                <MenuItem Header="_Home" Command="{Binding ShowHomeCommand}" />
+                <MenuItem Header="_Artists" Command="{Binding ShowArtistsCommand}" />
+                <!-- Artists/Albums share same alt key so i changed to Al_bums to it'd be "b" instead -->
+                <MenuItem Header="Al_bums" Command="{Binding ShowAlbumsCommand}" />
+                <MenuItem Header="_Tracks" Command="{Binding ShowTracksCommand}" />
+            </MenuItem>
+        </Menu>
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </DockPanel>
+    
 </Window>
+    
