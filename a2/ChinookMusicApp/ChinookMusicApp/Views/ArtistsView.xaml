@@ -6,7 +6,16 @@
              xmlns:local="clr-namespace:ChinookMusicApp.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="ARTISTS VIEW" />
-    </Grid>
+    <ListView ItemsSource="{Binding Artists}">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="#" Width="50"
+                                DisplayMemberBinding="{Binding ArtistId}"/>
+                <GridViewColumn Header="Name" Width="300"
+                                DisplayMemberBinding="{Binding Name}"/>
+                <GridViewColumn Header="Albums" Width="50"
+                                DisplayMemberBinding="{Binding Albums.Count}"/>
+            </GridView>
+        </ListView.View>
+    </ListView>
 </UserControl>
