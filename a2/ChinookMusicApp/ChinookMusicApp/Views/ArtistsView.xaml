@@ -10,6 +10,9 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
             <TextBlock Text="Search:" Margin="0,0,6,0"/>
             <TextBox Width="220" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Sort:" Margin="16,0,6,0" />
+            <ComboBox Width="140" ItemsSource="{Binding SortOptions}"
+                                  SelectedItem="{Binding SelectedSort}" />
         </StackPanel>
         <TextBlock DockPanel.Dock="Bottom" Margin="8,8,0,8" Text="{Binding Summary}" />
         <ListView ItemsSource="{Binding Artists}">

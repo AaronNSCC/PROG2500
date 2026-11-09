@@ -15,16 +15,22 @@ public class ArtistsViewModel : ViewModelBase
 
     public ObservableCollection<Artist> Artists { get; }
 
-    // helper method to load all artists- sorted by name 
+    // helper method to load all artists- sorted by name and sort the user selected
     private void LoadArtists()
     {
-        // loads all artists (.Where() will filter out whatever doesn't contain the SearchText)
-        var artists = context.Artists
+        // buliding the query matching artists with their albums
+        var query = context.Artists
             .Include(a => a.Albums)
             // intentionally using .Contains instead of StartsWith- I could search "peas" to get Black Eyed Peas for ex.
-            .Where(a => a.Name != null && a.Name.Contains(SearchText))  // blank SearchText will match every name
-            .OrderBy(a => a.Name)
-            .ToList();
+            .Where(a => a.Name != null && a.Name.Contains(SearchText));  // blank SearchText will match every name
+
+        // user picks the sorting method 
+        if (SelectedSort == "Name (Z-A)") { query = query.OrderByDescending(a => a.Name); }
+        else if (SelectedSort == "Albums (desc)") { query = query.OrderByDescending(a => a.Albums.Count).ThenBy(a => a.Name); }
+        else if (SelectedSort == "Albums (asc)") { query = query.OrderBy(a => a.Albums.Count).ThenBy(a => a.Name); }
+        else { query = query.OrderBy(a => a.Name); }
+
+        var artists = query.ToList();
 
         Artists.Clear();            // start from empty list
         foreach (var artist in artists)
@@ -54,6 +60,22 @@ public class ArtistsViewModel : ViewModelBase
         get
         {
             return $"Total artists: {TotalArtists}      Matching artists: {Artists.Count}";
+        }
+    }
+
+    // choices dropdown
+    public List<string> SortOptions { get; } = new List<string>
+    {
+        "Name (A-Z)", "Name (Z-A)", "Albums (desc)", "Albums (asc)"
+    };
+    private string selectedSort = "Name (A-Z)";
+    public string SelectedSort
+    {
+        get => selectedSort;
+        set
+        {
+            if (SetProperty(ref selectedSort, value))
+                LoadArtists();
         }
     }
 
