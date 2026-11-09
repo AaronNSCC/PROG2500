@@ -20,7 +20,7 @@ public class ArtistsViewModel : ViewModelBase
     // helper method to load all artists- sorted by name and sort the user selected
     private void LoadArtists()
     {
-        // buliding the query matching artists with their albums
+        // building the query matching artists with their albums
         var query = context.Artists
             .Include(a => a.Albums)
             // intentionally using .Contains instead of StartsWith- I could search "peas" to get Black Eyed Peas for ex.
