@@ -14,8 +14,13 @@
         <TextBlock Text="Browse artists, albums and tracks using the toolbar or the menu."
                    HorizontalAlignment="Center" Margin="0,6,0,0" />
         <Separator Margin="0,10,0,10" />
-        <Button Content="Artists" Command="{Binding ShowArtistsCommand}" Margin="4" />
-        <Button Content="Albums" Command="{Binding ShowAlbumsCommand}" Margin="4" />
-        <Button Content="Tracks" Command="{Binding ShowTracksCommand}" Margin="4" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Artists" Command="{Binding DataContext.ShowArtistsCommand,
+                    RelativeSource={RelativeSource AncestorType=Window}}" Margin="4" />
+            <Button Content="Albums" Command="{Binding DataContext.ShowAlbumsCommand,
+                    RelativeSource={RelativeSource AncestorType=Window}}" Margin="4" />
+            <Button Content="Tracks" Command="{Binding DataContext.ShowTracksCommand,
+                    RelativeSource={RelativeSource AncestorType=Window}}" Margin="4" />
+        </StackPanel>
     </StackPanel>
 </UserControl>
