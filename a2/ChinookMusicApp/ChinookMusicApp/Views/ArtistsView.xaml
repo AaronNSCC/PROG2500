@@ -13,6 +13,8 @@
             <TextBlock Text="Sort:" Margin="16,0,6,0" />
             <ComboBox Width="140" ItemsSource="{Binding SortOptions}"
                                   SelectedItem="{Binding SelectedSort}" />
+            <Button Content="Reset" Margin="16,0,0,0" Command="{Binding ResetCommand}"
+                    ToolTip="Clear the search and set the sort method to default (A-Z)."/>
         </StackPanel>
         <TextBlock DockPanel.Dock="Bottom" Margin="8,8,0,8" Text="{Binding Summary}" />
         <ListView ItemsSource="{Binding Artists}">

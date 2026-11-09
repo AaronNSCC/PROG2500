@@ -6,6 +6,7 @@ using ChinookMusicApp.Models;
 
 using ChinookMusicApp.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Windows.Input;
 
 namespace ChinookMusicApp.ViewModels;
 
@@ -14,6 +15,7 @@ public class ArtistsViewModel : ViewModelBase
     private readonly ChinookContext context;
 
     public ObservableCollection<Artist> Artists { get; }
+    public ICommand ResetCommand { get; }
 
     // helper method to load all artists- sorted by name and sort the user selected
     private void LoadArtists()
@@ -38,6 +40,12 @@ public class ArtistsViewModel : ViewModelBase
             Artists.Add(artist);    // loop and add each artist 
         }
         OnPropertyChanged(nameof(Summary)); // summary text needs to reflect the changes
+    }
+
+    private void Reset()
+    {
+        SearchText = "";                // clears the search box and reloads
+        SelectedSort = "Name (A-Z)";    // resets the dropdown and reloads
     }
 
     private string searchText = "";
@@ -82,6 +90,8 @@ public class ArtistsViewModel : ViewModelBase
     public ArtistsViewModel(ChinookContext context)
     {
         this.context = context;
+
+        ResetCommand = new RelayCommand(Reset);
 
         Artists = new ObservableCollection<Artist>();
         TotalArtists = context.Artists.Count();
