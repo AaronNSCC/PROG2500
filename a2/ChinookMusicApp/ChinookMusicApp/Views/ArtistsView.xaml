@@ -6,16 +6,22 @@
              xmlns:local="clr-namespace:ChinookMusicApp.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ListView ItemsSource="{Binding Artists}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="#" Width="50"
-                                DisplayMemberBinding="{Binding ArtistId}"/>
-                <GridViewColumn Header="Name" Width="300"
-                                DisplayMemberBinding="{Binding Name}"/>
-                <GridViewColumn Header="Albums" Width="50"
-                                DisplayMemberBinding="{Binding Albums.Count}"/>
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Search:" Margin="0,0,6,0"/>
+            <TextBox Width="220" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <ListView ItemsSource="{Binding Artists}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="#" Width="50"
+                                    DisplayMemberBinding="{Binding ArtistId}"/>
+                    <GridViewColumn Header="Name" Width="300"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Albums" Width="70"
+                                    DisplayMemberBinding="{Binding Albums.Count}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
 </UserControl>
