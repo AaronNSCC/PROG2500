@@ -31,6 +31,7 @@ public class ArtistsViewModel : ViewModelBase
         {
             Artists.Add(artist);    // loop and add each artist 
         }
+        OnPropertyChanged(nameof(Summary)); // summary text needs to reflect the changes
     }
 
     private string searchText = "";
@@ -44,11 +45,24 @@ public class ArtistsViewModel : ViewModelBase
         }
     }
 
+    // counted once (every artist)
+    public int TotalArtists { get; }
+
+    // recalculated whenever the UI reads it - LoadArtists announces when it changes
+    public string Summary
+    {
+        get
+        {
+            return $"Total artists: {TotalArtists}      Matching artists: {Artists.Count}";
+        }
+    }
+
     public ArtistsViewModel(ChinookContext context)
     {
         this.context = context;
 
         Artists = new ObservableCollection<Artist>();
+        TotalArtists = context.Artists.Count();
         LoadArtists();
     }
 }

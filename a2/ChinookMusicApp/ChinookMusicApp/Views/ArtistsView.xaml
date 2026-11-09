@@ -11,6 +11,7 @@
             <TextBlock Text="Search:" Margin="0,0,6,0"/>
             <TextBox Width="220" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
+        <TextBlock DockPanel.Dock="Bottom" Margin="8,8,0,8" Text="{Binding Summary}" />
         <ListView ItemsSource="{Binding Artists}">
             <ListView.View>
                 <GridView>
