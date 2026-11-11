@@ -25,10 +25,22 @@ public class MainViewModel : ViewModelBase
                          AlbumsViewModel albums, TracksViewModel tracks)
     {
         currentViewModel = home;
-        ShowHomeCommand = new RelayCommand(() => CurrentViewModel = home);
-        ShowArtistsCommand = new RelayCommand(() => CurrentViewModel = artists);
-        ShowAlbumsCommand = new RelayCommand(() => CurrentViewModel = albums);
-        ShowTracksCommand = new RelayCommand(() => CurrentViewModel = tracks);
+        ShowHomeCommand = new RelayCommand(
+            () => CurrentViewModel = home,
+            // can only run if you're not currently on the home page
+            () => CurrentViewModel != home);
+        ShowArtistsCommand = new RelayCommand(
+            () => CurrentViewModel = artists,
+            // can only run if you're not currently on the artists page
+            () => CurrentViewModel != artists);
+        ShowAlbumsCommand = new RelayCommand(
+            () => CurrentViewModel = albums,
+            // can only run if you're not currently on the albums page
+            () => CurrentViewModel != albums);
+        ShowTracksCommand = new RelayCommand(
+            () => CurrentViewModel = tracks,
+            // can only run if you're not currently on the tracks page
+            () => CurrentViewModel != tracks);
 
         ExitCommand = new RelayCommand(() => Application.Current.Shutdown());
     }
