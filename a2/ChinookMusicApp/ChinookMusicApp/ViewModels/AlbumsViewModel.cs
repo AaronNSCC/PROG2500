@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using ChinookMusicApp.Data;
 using ChinookMusicApp.Models;
-
-using ChinookMusicApp.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace ChinookMusicApp.ViewModels;
 
+// --------- Same pattern as ArtistsViewModel, for albums ------------
+
 public class AlbumsViewModel : ViewModelBase
 {
-    private readonly ChinookContext context;
+    private readonly ChinookContext context; // handed in from App.OnStartup in App.xaml.cs
 
     public ObservableCollection<Album> Albums { get; }
     public ICommand ResetCommand { get; }
 
-    // helper method to load all albums- sorted by name and sort the user selected
+    // helper method to load all albums- sorted by title and sort the user selected
     private void LoadAlbums()
     {
         // building the query matching albums with their artists and tracks

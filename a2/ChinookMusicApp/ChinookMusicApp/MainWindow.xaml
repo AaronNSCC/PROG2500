@@ -73,6 +73,7 @@
                     </MenuItem>
                 </MenuItem>
             </Menu>
+            <!-- toolbar and menu icons: Icons by Icons8 (https://icons8.com) -->
             <ToolBarTray DockPanel.Dock="Right" IsLocked="True" Background="Transparent">
                 <ToolBar Background="Transparent">
                     <Button Command="{Binding ShowHomeCommand}" ToolTip="Go to the home page"

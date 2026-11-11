@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using ChinookMusicApp.Data;
 using ChinookMusicApp.Models;
-
-using ChinookMusicApp.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace ChinookMusicApp.ViewModels;
 
+// --------- Same pattern as ArtistsViewModel, for tracks ------------
+
 public class TracksViewModel : ViewModelBase
 {
-    private readonly ChinookContext context;
+    private readonly ChinookContext context; // handed in from App.OnStartup in App.xaml.cs
 
     public ObservableCollection<Track> Tracks { get; }
     public ICommand ResetCommand { get; }

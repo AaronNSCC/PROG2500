@@ -9,6 +9,7 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Style="{StaticResource SearchRow}">
             <TextBlock Text="Search:" Style="{StaticResource FieldLabel}"/>
+            <!-- UpdateSourceTrigger=PropertyChanged sends every keystroke to the ViewModel -->
             <TextBox Width="220" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Text="Sort:" Style="{StaticResource FieldLabel}" Margin="16,0,6,0" />
             <ComboBox Width="140" ItemsSource="{Binding SortOptions}"
