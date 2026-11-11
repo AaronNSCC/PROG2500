@@ -13,7 +13,7 @@
             <TextBlock Text="Sort:" Style="{StaticResource FieldLabel}" Margin="16,0,6,0" />
             <ComboBox Width="140" ItemsSource="{Binding SortOptions}"
                                   SelectedItem="{Binding SelectedSort}" />
-            <Button Content="Reset" Margin="16,0,0,0" Command="{Binding ResetCommand}"
+            <Button Content="Reset" Style="{StaticResource AccentButton}" Command="{Binding ResetCommand}"
                     ToolTip="Clear the search and sort by name (A-Z)."/>
         </StackPanel>
         <TextBlock DockPanel.Dock="Bottom" Style="{StaticResource SummaryText}" Text="{Binding Summary}" />

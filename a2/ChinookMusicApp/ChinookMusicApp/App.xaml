@@ -35,7 +35,18 @@
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
         </Style>
-        
+
+        <!-- solid accent buttons -->
+        <Style x:Key="AccentButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}" />
+            <Setter Property="Margin" Value="16,0,0,0" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="12,4" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
         <!-- IMPLICIT STYLES -->
         <Style TargetType="ListView">
             <Setter Property="Margin" Value="10,0,10,0" />
