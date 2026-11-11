@@ -28,14 +28,34 @@
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Background="WhiteSmoke">
             <Menu DockPanel.Dock="Left" VerticalAlignment="Center" Background="Transparent">
                 <MenuItem Header="_File">
-                    <MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
+                    <MenuItem Header="E_xit" Command="{Binding ExitCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/exit.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Navigate">
-                    <MenuItem Header="_Home" Command="{Binding ShowHomeCommand}" />
-                    <MenuItem Header="_Artists" Command="{Binding ShowArtistsCommand}" />
+                    <MenuItem Header="_Home" Command="{Binding ShowHomeCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/home.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Artists" Command="{Binding ShowArtistsCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/artists.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <!-- Artists/Albums share same alt key so i changed to Al_bums to it'd be "b" instead -->
-                    <MenuItem Header="Al_bums" Command="{Binding ShowAlbumsCommand}" />
-                    <MenuItem Header="_Tracks" Command="{Binding ShowTracksCommand}" />
+                    <MenuItem Header="Al_bums" Command="{Binding ShowAlbumsCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/albums.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Tracks" Command="{Binding ShowTracksCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/tracks.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
             <ToolBarTray DockPanel.Dock="Right" IsLocked="True" Background="Transparent">
@@ -46,19 +66,19 @@
                             <TextBlock Text="Home" Margin="6,0,0,0" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding ShowArtistsCommand}" ToolTip="Go to the artists page">
+                    <Button Command="{Binding ShowArtistsCommand}" ToolTip="Browse all artists and their album counts">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/artists.png" Width="20" Height="20" />
                             <TextBlock Text="Artists" Margin="6,0,0,0" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding ShowAlbumsCommand}" ToolTip="Go to the albums page">
+                    <Button Command="{Binding ShowAlbumsCommand}" ToolTip="Browse albums with their artist and track count">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/albums.png" Width="20" Height="20" />
                             <TextBlock Text="Albums" Margin="6,0,0,0" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding ShowTracksCommand}" ToolTip="Go to the tracks page">
+                    <Button Command="{Binding ShowTracksCommand}" ToolTip="Browse all tracks with artist, album, genre, and length">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/tracks.png" Width="20" Height="20" />
                             <TextBlock Text="Tracks" Margin="6,0,0,0" />
