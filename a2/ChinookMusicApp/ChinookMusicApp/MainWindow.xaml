@@ -22,6 +22,20 @@
         <DataTemplate DataType="{x:Type vm:TracksViewModel}">
             <views:TracksView />
         </DataTemplate>
+
+        <!-- icons and labels in the top bar -->
+        <Style x:Key="ToolbarIcon" TargetType="Image">
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+        <Style x:Key="MenuIcon" TargetType="Image">
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+        </Style>
+        <Style x:Key="ToolbarLabel" TargetType="TextBlock">
+            <Setter Property="Margin" Value="6,0,0,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
     </Window.Resources>
     
 
@@ -31,30 +45,30 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="E_xit" Command="{Binding ExitCommand}">
                         <MenuItem.Icon>
-                            <Image Source="/Images/exit.png" Width="16" Height="16" />
+                            <Image Source="/Images/exit.png" Style="{StaticResource MenuIcon}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Navigate">
                     <MenuItem Header="_Home" Command="{Binding ShowHomeCommand}">
                         <MenuItem.Icon>
-                            <Image Source="/Images/home.png" Width="16" Height="16" />
+                            <Image Source="/Images/home.png" Style="{StaticResource MenuIcon}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="_Artists" Command="{Binding ShowArtistsCommand}">
                         <MenuItem.Icon>
-                            <Image Source="/Images/artists.png" Width="16" Height="16" />
+                            <Image Source="/Images/artists.png" Style="{StaticResource MenuIcon}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <!-- Artists/Albums share same alt key so i changed to Al_bums to it'd be "b" instead -->
                     <MenuItem Header="Al_bums" Command="{Binding ShowAlbumsCommand}">
                         <MenuItem.Icon>
-                            <Image Source="/Images/albums.png" Width="16" Height="16" />
+                            <Image Source="/Images/albums.png" Style="{StaticResource MenuIcon}" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="_Tracks" Command="{Binding ShowTracksCommand}">
                         <MenuItem.Icon>
-                            <Image Source="/Images/tracks.png" Width="16" Height="16" />
+                            <Image Source="/Images/tracks.png" Style="{StaticResource MenuIcon}" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -64,29 +78,29 @@
                     <Button Command="{Binding ShowHomeCommand}" ToolTip="Go to the home page"
                             Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/home.png" Width="20" Height="20" />
-                            <TextBlock Text="Home" Margin="6,0,0,0" />
+                            <Image Source="/Images/home.png" Style="{StaticResource ToolbarIcon}" />
+                            <TextBlock Text="Home" Style="{StaticResource ToolbarLabel}" />
                         </StackPanel>
                     </Button>
                     <Button Command="{Binding ShowArtistsCommand}" ToolTip="Browse all artists and their album counts"
                             Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/artists.png" Width="20" Height="20" />
-                            <TextBlock Text="Artists" Margin="6,0,0,0" />
+                            <Image Source="/Images/artists.png" Style="{StaticResource ToolbarIcon}" />
+                            <TextBlock Text="Artists" Style="{StaticResource ToolbarLabel}" />
                         </StackPanel>
                     </Button>
                     <Button Command="{Binding ShowAlbumsCommand}" ToolTip="Browse albums with their artist and track count"
                             Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/albums.png" Width="20" Height="20" />
-                            <TextBlock Text="Albums" Margin="6,0,0,0" />
+                            <Image Source="/Images/albums.png" Style="{StaticResource ToolbarIcon}" />
+                            <TextBlock Text="Albums" Style="{StaticResource ToolbarLabel}" />
                         </StackPanel>
                     </Button>
                     <Button Command="{Binding ShowTracksCommand}" ToolTip="Browse all tracks with artist, album, genre, and length"
                             Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/tracks.png" Width="20" Height="20" />
-                            <TextBlock Text="Tracks" Margin="6,0,0,0" />
+                            <Image Source="/Images/tracks.png" Style="{StaticResource ToolbarIcon}" />
+                            <TextBlock Text="Tracks" Style="{StaticResource ToolbarLabel}" />
                         </StackPanel>
                     </Button>
                 </ToolBar>
