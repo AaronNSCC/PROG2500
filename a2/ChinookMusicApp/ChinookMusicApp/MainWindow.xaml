@@ -7,7 +7,8 @@
         xmlns:vm="clr-namespace:ChinookMusicApp.ViewModels"
         xmlns:views="clr-namespace:ChinookMusicApp.Views"
         mc:Ignorable="d"
-        Title="Chinook Music Store" Height="450" Width="800">
+        Title="Chinook Music Store" Height="450" Width="800"
+        Background="{StaticResource BackgroundBrush}">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:HomeViewModel}">
             <views:HomeView />
@@ -25,7 +26,7 @@
     
 
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Background="WhiteSmoke">
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Background="{StaticResource BarBrush}">
             <Menu DockPanel.Dock="Left" VerticalAlignment="Center" Background="Transparent">
                 <MenuItem Header="_File">
                     <MenuItem Header="E_xit" Command="{Binding ExitCommand}">
@@ -60,25 +61,29 @@
             </Menu>
             <ToolBarTray DockPanel.Dock="Right" IsLocked="True" Background="Transparent">
                 <ToolBar Background="Transparent">
-                    <Button Command="{Binding ShowHomeCommand}" ToolTip="Go to the home page">
+                    <Button Command="{Binding ShowHomeCommand}" ToolTip="Go to the home page"
+                            Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/home.png" Width="20" Height="20" />
                             <TextBlock Text="Home" Margin="6,0,0,0" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding ShowArtistsCommand}" ToolTip="Browse all artists and their album counts">
+                    <Button Command="{Binding ShowArtistsCommand}" ToolTip="Browse all artists and their album counts"
+                            Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/artists.png" Width="20" Height="20" />
                             <TextBlock Text="Artists" Margin="6,0,0,0" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding ShowAlbumsCommand}" ToolTip="Browse albums with their artist and track count">
+                    <Button Command="{Binding ShowAlbumsCommand}" ToolTip="Browse albums with their artist and track count"
+                            Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/albums.png" Width="20" Height="20" />
                             <TextBlock Text="Albums" Margin="6,0,0,0" />
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding ShowTracksCommand}" ToolTip="Browse all tracks with artist, album, genre, and length">
+                    <Button Command="{Binding ShowTracksCommand}" ToolTip="Browse all tracks with artist, album, genre, and length"
+                            Style="{StaticResource NavButton}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/tracks.png" Width="20" Height="20" />
                             <TextBlock Text="Tracks" Margin="6,0,0,0" />
