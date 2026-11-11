@@ -15,5 +15,50 @@
             <Setter Property="Padding" Value="8,4" />
             <Setter Property="Cursor" Value="Hand" />
         </Style>
+
+        <!-- the row above each list -->
+        <Style x:Key="SearchRow" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Margin" Value="10,10,10,8" />
+        </Style>
+
+        <!-- small labels -->
+        <Style x:Key="FieldLabel" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,6,0" />
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        </Style>
+
+        <!-- the totals line under each list -->
+        <Style x:Key="SummaryText" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,6,10,10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        </Style>
+        
+        <!-- IMPLICIT STYLES -->
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="10,0,10,0" />
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="AlternationCount" Value="2" />
+        </Style>
+
+        <!-- each row (AI Assisted for alternating rows) -->
+        <Style TargetType="ListViewItem">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="{StaticResource BarBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- column headers -->
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Padding" Value="6,4" />
+        </Style>
     </Application.Resources>
 </Application>
